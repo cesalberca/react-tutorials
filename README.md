@@ -1,6 +1,8 @@
 # React tutorial - Autentia
 
-[React](https://facebook.github.io/react/) es una librería para crear interfaces de usuarios. Ni más ni menos. Creada en Facebook en 2011 por Jordan Walke y liberada como open source en 2013, cuenta con proyectos en producción por compañías como Netflix, Airbnb, Walmart, Facebook e Instagram. Sus más notables propuestas son:
+[React](https://facebook.github.io/react/) es una librería para crear interfaces de usuarios. Fue creada por Facebook en 2011 y liberada como open source en 2013, cuenta con proyectos en producción por compañías como Netflix, Airbnb, Walmart, Facebook e Instagram.
+
+Sus más notables propuestas son:
 
 * Propagación de datos unidireccional
 
@@ -24,30 +26,7 @@
 
 ## Instalación
 
-React, como se ha mencionado antes es una librería de Javascript. React necesita de dos paquetes: React y ReactDOM. El paquete de React se encarga de manejar todo el estado mientras que el paquete de ReactDOM se encarga de la renderización en web. Está diseñado así para poder cambiar la implementación de renderización, como por ejemplo para renderizar los componentes en aplicaciones móviles con React Native.
-
-Para poder hacer uso de éstas librerías se pueden tomar varios caminos:
-
-1. Descargar manualmente e incluirla en nuestro html
-    ```html
-    <script src="./dist/react.js"></script>
-    <script src="./dist/react-dom.js"></script>
-    ```
-2. Usar la CDN provista por [unpkg](https://unpkg.com)
-    ```html
-    <script src="https://unpkg.com/react@15/dist/react.js"></script>
-    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
-    ```
-3. Usar un package manager como [npm](https://www.npmjs.com/) o [yarn](https://yarnpkg.com/) para realizar la instalación y la gestión de dependencias
-    ```
-    npm install --save react react-dom
-    ```
-
-    `--save es para guardar como dependencia en nuestro package.json`.
-
-La opción más comunmente usada es la 3ª, con npm, el gestor de paquetes de Javascript.
-
-Ya que no sólamente necesitamos instalar las dependencias sino que tendremos que configurar todo el proyecto vamos a usar [Create React App](https://github.com/facebookincubator/create-react-app) para crear una aplicación web de React lista para ser usada, sin necesidad de configurar nada.
+Vamos a usar [Create React App](https://github.com/facebookincubator/create-react-app) para crear una aplicación web, sin necesidad de configurar nada.
 
 Unicamente necesitaremos instalar en nuestra máquina [NodeJS](https://nodejs.org/en/) (Versión 7.7.4).
 
@@ -74,13 +53,13 @@ Create React App ha generado y dispuesto una estructura de ficheros de la siguie
 ```
 react-tutorial/
   README.md
-  node_modules/ // Librerías de nuestra aplicación
-  package.json // Información y dependencias de nuestro proyecto
-  .gitignore  // Fichero donde se determina qué carpetas no deberán ser trackeadas con git
+  node_modules/     // Librerías de nuestra aplicación
+  package.json      // Información y dependencias de nuestro proyecto
+  .gitignore        // Fichero donde se determina qué carpetas no deberán ser trackeadas con git
   public/
-    favicon.ico // Icono de la app
-    index.html // Página donde se inyectarán los componentes de React
-  src/ // Directorio de desarollo
+    favicon.ico
+index.html          // Página donde se inyectarán los componentes de React
+  src/              // Directorio de desarollo
     App.css
     App.js
     App.test.js
@@ -89,13 +68,58 @@ react-tutorial/
     logo.svg
 ```
 
-Las ventajas de usar esta utilidad son las siguientes:
+## Componentes
 
-* Soporte de sintaxis para React, JSX, ES6, y Flow.
-* Extras de lenguaje más allá de ES6, como [spread operator](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Spread_operator).
-* Servidor de desarrollo que captura los errores más comunes.
-* Importar imágenes y css desde Javascript
-* Autoprefijar css para temas de compatibilidad.
-* Un build system para generar ficheros listos para producción, minificados y con sourcemaps.
+Vamos a crear nuestro primer componente. Creamos un fichero nuevo llamado `Hola.js` en la carpeta `src`.
 
-De todas maneras, si deseamos configurar nosotros mismos el entorno de desarollo podemos hacer en cualquier momento `npm run eject`. Ésta acción es irreversible, con lo que hay que estar seguro de ello.
+_Nota: Por convención los componentes de React se escriben con la primera letra en mayúsculas_.
+
+```js
+import React, { Component } from 'react';
+
+class Hola extends Component {
+  render() {
+    return (
+      <h1>Hola mundo</h1>
+    );
+  }
+}
+
+export default Hola;
+```
+
+Para usar este componente vamos a ir al fichero `App.js` y pondremos lo siguiente:
+
+```js
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+// Importamos nuestro componente
+import Hola from './Hola';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Welcome to React</h2>
+        </div>
+        <p className="App-intro">
+          {/*Incluimos nuestro componente*/}
+          <Hola/>
+        </p>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+Guardamos y veremos que la página se ha recargado automáticamente. Tendríamos que ver lo siguiente:
+
+![test](./assets/mi-primer-componente.png)
+
+No olvidemos que podemos hacer que se rendericen componentes dinámicamente. Imaginemos que queremos hacer que

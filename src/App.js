@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// Importamos nuestro componente
+import Hola from './Hola';
 import logo from './logo.svg';
 import './App.css';
 
@@ -11,7 +13,8 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          {/*Incluimos nuestro componente*/}
+          <Hola/>
         </p>
       </div>
     );
