@@ -14,7 +14,7 @@ class App extends Component {
         </div>
         <p className="App-intro">
           {/*Incluimos nuestro componente*/}
-          <Hola/>
+          <Hola nombre="César"/>
         </p>
       </div>
     );

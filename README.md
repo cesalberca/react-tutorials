@@ -18,7 +18,7 @@ Sus más notables propuestas son:
 
 * Aplicaciones isomórficas
 
-    Esto quiere decir que las aplicaciones web se pueden renderizar tanto en el cliente como en el servidor.
+    Esto quiere decir que las aplicaciones web se pueden renderizar tanto en el cliente como en el servidor. Si ésta se renderiza en el servidor se puede enviar al cliente desde el servidor html puro en aquellos casos que se pueda.∫
 
 * React Native
 
@@ -40,13 +40,15 @@ cd react-tutorial/
 npm start
 ```
 
-`-g quiere decir que instalaremos globalmente create-react-app. Esto es necesario ya que create-react-app genera toda una aplicación y por ello se usa globalmente.`
+_Nota: -g quiere decir que instalaremos globalmente create-react-app. Esto es necesario ya que create-react-app genera toda una aplicación y por ello se usa globalmente._
 
 Si todo ha ido bien veremos la siguiente pantalla:
 
 ![Create React App ejecutándose](https://camo.githubusercontent.com/506a5a0a33aebed2bf0d24d3999af7f582b31808/687474703a2f2f692e696d6775722e636f6d2f616d794e66434e2e706e67)
 
-¿Qué es lo que ha hecho create-react-app?
+Además veríamos que se abre nuestro navegador con la aplicación ya corriendo.
+
+## ¿Qué es lo que ha hecho create-react-app?
 
 Create React App ha generado y dispuesto una estructura de ficheros de la siguiente forma:
 
@@ -68,13 +70,16 @@ index.html          // Página donde se inyectarán los componentes de React
     logo.svg
 ```
 
+Además nos ayuda a generar un servidor local de desarrollo que nos muestra errores y recarga la página automáticamente cuando un cambio es detectado. 😎
+
+
 ## Componentes
 
 Vamos a crear nuestro primer componente. Creamos un fichero nuevo llamado `Hola.js` en la carpeta `src`.
 
 _Nota: Por convención los componentes de React se escriben con la primera letra en mayúsculas_.
 
-```js
+```jsx
 import React, { Component } from 'react';
 
 class Hola extends Component {
@@ -90,7 +95,7 @@ export default Hola;
 
 Para usar este componente vamos a ir al fichero `App.js` y pondremos lo siguiente:
 
-```js
+```jsx
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -122,4 +127,112 @@ Guardamos y veremos que la página se ha recargado automáticamente. Tendríamos
 
 ![test](./assets/mi-primer-componente.png)
 
-No olvidemos que podemos hacer que se rendericen componentes dinámicamente. Imaginemos que queremos hacer que
+Vamos a hacer un repaso rápido del código que acabamos de escribir.
+
+```jsx
+import React, { Component } from 'react';
+```
+
+Aquí importamos React. React tiene que estar en el contexto para que sepa que es un componente de React. Además, importamos de la librería de React el módulo `{ Component }`. Esto se debe a que nuestra clase debe extender de `Component`.
+
+```jsx
+class Hola extends Component {
+    ...
+}
+```
+
+Este es nuestro componente y debe extender de Component.
+
+```jsx
+render() {
+  return (
+    <h1>Hola mundo</h1>
+  );
+}
+```
+
+Este es el único método de nuestra clase. Tiene que ser llamado obligatoriamente `render()` y dentro de este método tenemos que retornar __html__. Esta quizás sea la parte más rara, incluir html en Javascript, pero como más adelante veremos es una gran ventaja.
+
+Varios puntos a tener en cuenta. React necesita que retornemos un único elemento (Independientemente de cuantos hijos tenga), por ejemplo, esto estaría mal:
+
+```jsx
+render() {
+  return (
+    <h1>Hola mundo</h1>
+    <h1>Adios mundo</h1>
+  );
+}
+```
+
+Mientras que esto estaría bien
+
+```jsx
+render() {
+  return (
+    <div>
+      <h1>Hola mundo</h1>
+      <h1>Adios mundo</h1>
+    </div>
+  );
+}
+```
+
+Y el otro punto importante es que hay ciertas palabras reservadas que no se pueden usar, ya que recordemos que estamos escribiendo html en Javascript, y hay nombre que colisionan. Por ejemplo, `class` debe ser sustituida por `className` y `for` tiene que ser sustituida por `htmlFor`.
+
+```jsx
+export default Hola;
+```
+
+Esta línea quiere decir que vamos a exportar nuestro componente para que éste pueda ser usado a lo largo de nuestra aplicación.
+
+## Props
+
+Vamos a hacer que nuestro componente `Hola` sea más dinámico.
+
+```jsx
+import React, { Component } from 'react';
+
+class Hola extends Component {
+  render() {
+    return (
+      <h1>Hola {this.props.nombre}</h1>
+    );
+  }
+}
+
+export default Hola;
+```
+
+El objeto `props` es un objeto especial donde se determinan todas las propiedades que tiene un componente. Se usa para hacer que los componentes rendericen una cosa u otra.
+
+Para asignarle un prop a un componente vamos a `App.js` y cambiamos
+
+```jsx
+<Hola/>
+```
+
+por
+
+```jsx
+<Hola nombre="César"/>
+```
+
+Veremos que la página se recarga y deberíamos ver lo siguiente:
+
+![Hola César](./assets/hola-test.png)
+
+Es importante ver que para hacer uso de expresiones en jsx éstas tienen que estar entre llaves. Dentro de estas llaves podemos hacer virguerías como:
+
+```jsx
+<h1>Hola {1 + 1}</h1>
+```
+
+O por ejemplo
+
+```jsx
+<h1>{this.props.nombre === 'César' ? `Ave ${this.props.nombre}` : 'Tú no eres César'}</h1>
+```
+
+Que hace que si la propiedad que hemos pasado a nuestro componente es César nos saluda como es debido.
+
+## Props vs State
