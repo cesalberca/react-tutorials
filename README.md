@@ -1,6 +1,6 @@
 # React tutorial - Autentia
 
-Antes de empezar este tutorial es recomendable tener conocimientos intermedios de Javascript y saber de ES6.
+Antes de empezar este tutorial es recomendable tener conocimientos intermedios de [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) y de [ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla).
 
 [React](https://facebook.github.io/react/) es una librería para crear interfaces de usuarios. Fue creada por Facebook en 2011 y liberada como open source en 2013, cuenta con proyectos en producción por compañías como Netflix, Airbnb, Walmart, Facebook e Instagram.
 
@@ -8,11 +8,11 @@ Sus más notables propuestas son:
 
 * Propagación de datos unidireccional
 
-    Los datos son propagados de __componentes padres a componentes hijos__. La comunicación entre padres e hijos se hace mediante __callbacks__ y los eventos son propagados de hijos a padres, siendo los componentes padre los que gestionan el estado y la lógica.
+    Los datos son propagados de __componentes padres a componentes hijos__. La comunicación entre padres e hijos se hace mediante __callbacks__ y los eventos son enviados de hijos a padres, siendo los componentes padre los que gestionan el estado y la lógica.
 
 * DOM Virtual
 
-    React genera una estructura en memoria semejante al DOM físico. Cuando detecta algún cambio compara entre el DOM virtual y el DOM físico y sólamente recarga aquello que haya cambiado y que sea visible para el usuario. Ésta innovación hace obsoleto el tener que recargar la página entera cada vez que el estado es modificado.
+    React genera una estructura en memoria semejante al DOM físico. Cuando detecta algún cambio compara entre el DOM virtual y el DOM físico y sólamente recarga aquello que haya cambiado. Ésta innovación hace obsoleto el tener que recargar la página entera cada vez que el estado es modificado.
 
 * JSX
 
@@ -20,7 +20,7 @@ Sus más notables propuestas son:
 
 * Aplicaciones isomórficas
 
-    Esto quiere decir que las aplicaciones web se pueden renderizar tanto en el cliente como en el servidor. Si ésta se renderiza en el servidor se puede enviar al cliente desde el servidor html puro en aquellos casos que se pueda.∫
+    Esto quiere decir que las aplicaciones web se pueden renderizar tanto en el cliente como en el servidor. Si ésta se renderiza en el servidor se puede enviar al cliente desde el servidor html puro en aquellos casos que se pueda.
 
 * React Native
 
@@ -28,7 +28,7 @@ Sus más notables propuestas son:
 
 ## Instalación
 
-Vamos a usar [Create React App](https://github.com/facebookincubator/create-react-app) para crear una aplicación web, sin necesidad de configurar nada.
+Vamos a usar [Create React App](https://github.com/facebookincubator/create-react-app) para crear una aplicación web sin necesidad de configurar nada.
 
 Unicamente necesitaremos instalar en nuestra máquina [NodeJS](https://nodejs.org/en/) (Versión 7.7.4).
 
@@ -41,8 +41,6 @@ create-react-app react-tutorial
 cd react-tutorial/
 npm start
 ```
-
-_Nota: -g quiere decir que instalaremos globalmente create-react-app. Esto es necesario ya que create-react-app genera toda una aplicación y por ello se usa globalmente._
 
 Si todo ha ido bien veremos la siguiente pantalla:
 
@@ -63,7 +61,7 @@ react-tutorial/
   public/
     favicon.ico
 index.html          // Página donde se inyectarán los componentes de React
-  src/              // Directorio de desarollo
+  src/              // Directorio de desarollo que es el que usaremos nosotros
     App.css
     App.js
     App.test.js
@@ -232,7 +230,7 @@ O por ejemplo
 <h1>{this.props.nombre === 'César' ? `Ave ${this.props.nombre}` : 'Tú no eres César'}</h1>
 ```
 
-Que hace que si la propiedad que hemos pasado a nuestro componente es César nos saluda como es debido.
+Que hace que si la propiedad que hemos pasado a nuestro componente es "César" nos saluda como es debido.
 
 ## State
 
@@ -261,7 +259,7 @@ class Contador extends Component {
 export default Contador;
 ```
 
-Vamos a ir por partes explicando lo que hace cada parte.
+Vamos a ir poco a poco explicando lo que hace cada parte.
 
 ```jsx
 constructor() {
@@ -273,7 +271,19 @@ constructor() {
 }
 ```
 
-En el constructor de la clase llamamos a `super()` requisito obligatorio si tenemos un constructor. En la siguiente línea inicializamos `state` y le asignamos un objeto con una clave y un valor.
+En el constructor de la clase llamamos a `super()` requisito obligatorio si tenemos un constructor. En la siguiente línea inicializamos `state` y le asignamos un objeto con una clave y un valor. Este estado puede ser cualquier cosa, desde más objetos hasta arrays o strings.
+
+Si queremos más estados, sólamente los tenemos que separar por comas
+
+```jsx
+this.state = {
+    contador: 0,
+    miArray: [1, 2, 3],
+    miObjeto: {
+        clave: 'valor'
+    }
+  };
+```
 
 ```jsx
 render() {
@@ -301,7 +311,7 @@ class Contador extends Component {
 
   aumentarContador = () => {
     // Importante no modificar directamente el estado, si no usar setState
-    // y pasarle el objeto entero a modificar
+    // y pasarle la clave del objeto a modificar y su nuevo valor
     this.setState({contador: this.state.contador + 1});
   }
 
