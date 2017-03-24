@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-// Importamos nuestro componente
-import Hola from './Hola';
 import logo from './logo.svg';
 import './App.css';
+
+// Importamos nuestro componente
+import Contador from './Contador';
 
 class App extends Component {
   render() {
@@ -12,10 +13,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
+        <div className="App-intro">
           {/*Incluimos nuestro componente*/}
-          <Hola nombre="César"/>
-        </p>
+          <Contador/>
+        </div>
       </div>
     );
   }

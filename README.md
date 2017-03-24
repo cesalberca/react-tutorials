@@ -1,5 +1,7 @@
 # React tutorial - Autentia
 
+Antes de empezar este tutorial es recomendable tener conocimientos intermedios de Javascript y saber de ES6.
+
 [React](https://facebook.github.io/react/) es una librería para crear interfaces de usuarios. Fue creada por Facebook en 2011 y liberada como open source en 2013, cuenta con proyectos en producción por compañías como Netflix, Airbnb, Walmart, Facebook e Instagram.
 
 Sus más notables propuestas son:
@@ -72,7 +74,6 @@ index.html          // Página donde se inyectarán los componentes de React
 
 Además nos ayuda a generar un servidor local de desarrollo que nos muestra errores y recarga la página automáticamente cuando un cambio es detectado. 😎
 
-
 ## Componentes
 
 Vamos a crear nuestro primer componente. Creamos un fichero nuevo llamado `Hola.js` en la carpeta `src`.
@@ -111,10 +112,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
+        <div className="App-intro">
           {/*Incluimos nuestro componente*/}
           <Hola/>
-        </p>
+        </div>
       </div>
     );
   }
@@ -151,9 +152,7 @@ render() {
 }
 ```
 
-Este es el único método de nuestra clase. Tiene que ser llamado obligatoriamente `render()` y dentro de este método tenemos que retornar __html__. Esta quizás sea la parte más rara, incluir html en Javascript, pero como más adelante veremos es una gran ventaja.
-
-Varios puntos a tener en cuenta. React necesita que retornemos un único elemento (Independientemente de cuantos hijos tenga), por ejemplo, esto estaría mal:
+Este es el único método de nuestra clase. Tiene que ser llamado obligatoriamente `render()` y este método es el que se encarga de renderizar el componente. Varios puntos a tener en cuenta. React necesita que retornemos un único elemento (Independientemente de cuantos hijos tenga), por ejemplo, esto nos daría un error:
 
 ```jsx
 render() {
@@ -187,7 +186,7 @@ Esta línea quiere decir que vamos a exportar nuestro componente para que éste 
 
 ## Props
 
-Vamos a hacer que nuestro componente `Hola` sea más dinámico.
+Vamos a hacer que nuestro componente `Hola` sea dinámico.
 
 ```jsx
 import React, { Component } from 'react';
@@ -203,7 +202,7 @@ class Hola extends Component {
 export default Hola;
 ```
 
-El objeto `props` es un objeto especial donde se determinan todas las propiedades que tiene un componente. Se usa para hacer que los componentes rendericen una cosa u otra.
+El objeto `props` es un objeto especial donde se determinan todas las propiedades que tiene un componente. Se usa para hacer que los componentes rendericen una cosa u otra. A este objeto props se le puede pasar desde __strings__ hasta __objetos__ e incluso __funciones__.
 
 Para asignarle un prop a un componente vamos a `App.js` y cambiamos
 
@@ -235,4 +234,126 @@ O por ejemplo
 
 Que hace que si la propiedad que hemos pasado a nuestro componente es César nos saluda como es debido.
 
-## Props vs State
+## State
+
+Vamos a ver una parte primordial de las aplicaciones hechas con React. El __estado__. Imaginemos que queremos hacer un contador que vaya contando de uno en uno.
+
+Primero hagamos un componente llamado `Contador.js` en la carpeta `src`.
+
+```jsx
+import React, { Component } from 'react';
+
+class Contador extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      contador: 0
+    };
+  }
+
+  render() {
+    return (
+      <span>{this.state.contador}</span>
+    );
+  }
+}
+export default Contador;
+```
+
+Vamos a ir por partes explicando lo que hace cada parte.
+
+```jsx
+constructor() {
+  super();
+
+  this.state = {
+    contador: 0
+  };
+}
+```
+
+En el constructor de la clase llamamos a `super()` requisito obligatorio si tenemos un constructor. En la siguiente línea inicializamos `state` y le asignamos un objeto con una clave y un valor.
+
+```jsx
+render() {
+  return (
+    <span>{this.state.contador}</span>
+  );
+}
+```
+
+En el método ´render()´ pintamos el estado con `this.state.contador`. Ahora bien, el puntazo de React es que __cuando modificamos el estado, todos aquellos componentes que dependen de ese estado se recargan automáticamente__.
+
+Para ello vamos a crear un botón de aumente el contador y un método de aumentar:
+
+```jsx
+import React, { Component } from 'react';
+
+class Contador extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      contador: 0
+    };
+  }
+
+  aumentarContador = () => {
+    // Importante no modificar directamente el estado, si no usar setState
+    // y pasarle el objeto entero a modificar
+    this.setState({contador: this.state.contador + 1});
+  }
+
+  render() {
+    return (
+      {/* Como veíamos antes es necesario devolver un único elemento padre
+      por eso usamos un div para agrupar lo demás elementos */}
+      <div>
+        <span>{this.state.contador}</span>
+        {/* Al método onClick le asignamos un método.
+        Importante poner la C de onClick en mayúsculas */}
+        <button onClick={this.aumentarContador()}>+</button>
+      </div>
+    );
+  }
+}
+
+export default Contador;
+```
+
+Y para usarlo vamos a `App.js` e importamos nuestro componente y lo incluimos como se muestra continuación.
+
+```jsx
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+// Importamos nuestro componente
+import Contador from './Contador';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Welcome to React</h2>
+        </div>
+        <div className="App-intro">
+          {/*Incluimos nuestro componente*/}
+          <Contador/>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+Si todo ha ido bien veremos lo siguiente:
+
+![Contador funcionando](./assets/contador.png)
+
+ Y podrás comprobar que si pulsas sobre el botón el contador va aumentando. 👍
