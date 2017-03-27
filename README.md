@@ -2,13 +2,15 @@
 
 Antes de empezar este tutorial es recomendable tener conocimientos intermedios de [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) y de [ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla).
 
+---
+
 [React](https://facebook.github.io/react/) es una librería para crear interfaces de usuarios. Fue creada por Facebook en 2011 y liberada como open source en 2013, cuenta con proyectos en producción por compañías como Netflix, Airbnb, Walmart, Facebook e Instagram.
 
 Sus más notables propuestas son:
 
 * Propagación de datos unidireccional
 
-    Los datos son propagados de __componentes padres a componentes hijos__. La comunicación entre padres e hijos se hace mediante __callbacks__ y los eventos son enviados de hijos a padres, siendo los componentes padre los que gestionan el estado y la lógica.
+    Los datos son propagados de __componentes padres a componentes hijos__. La comunicación entre padres e hijos se hace mediante __[callbacks](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/)__ y los eventos son enviados de hijos a padres, siendo los componentes padre los que gestionan el estado y la lógica.
 
 * DOM Virtual
 
@@ -16,7 +18,7 @@ Sus más notables propuestas son:
 
 * JSX
 
-    JSX es una extensión de la sintaxis de Javascript comúnmente usada para codificar los componentes. Es semejante a html y se embebe en los ficheros `.js`.
+    JSX es una extensión de la sintaxis de Javascript comúnmente usada para codificar los componentes. Es semejante a html y se embebe en los ficheros `.js`, con lo que disponemos de todas las ventajas programáticas de Javascript.
 
 * Aplicaciones isomórficas
 
@@ -30,7 +32,7 @@ Sus más notables propuestas son:
 
 Vamos a usar [Create React App](https://github.com/facebookincubator/create-react-app) para crear una aplicación web sin necesidad de configurar nada.
 
-Unicamente necesitaremos instalar en nuestra máquina [NodeJS](https://nodejs.org/en/) (Versión 7.7.4).
+Unicamente necesitaremos instalar en nuestra máquina [NodeJS](https://nodejs.org/en/) (Versión 7.7.4 o mayor).
 
 Una vez instalado NodeJS pasaremos a descargar la utilidad de `create-react-app`. Para ello abrimos terminal y seguimos estos comandos:
 
@@ -70,7 +72,7 @@ index.html          // Página donde se inyectarán los componentes de React
     logo.svg
 ```
 
-Además nos ayuda a generar un servidor local de desarrollo que nos muestra errores y recarga la página automáticamente cuando un cambio es detectado. 😎
+Además nos ayuda a generar un servidor local de desarrollo que nos muestra errores nos ofrece linting en nuestro editor y recarga la página automáticamente cuando un cambio es detectado. 😎
 
 ## Componentes
 
@@ -174,7 +176,7 @@ render() {
 }
 ```
 
-Y el otro punto importante es que hay ciertas palabras reservadas que no se pueden usar, ya que recordemos que estamos escribiendo html en Javascript, y hay nombre que colisionan. Por ejemplo, `class` debe ser sustituida por `className` y `for` tiene que ser sustituida por `htmlFor`.
+Y el otro punto importante es que hay ciertas palabras reservadas que no se pueden usar, ya que recordemos que estamos escribiendo html (JSX) en Javascript, y hay nombre que colisionan. Por ejemplo, `class` debe ser sustituida por `className` y `for` tiene que ser sustituida por `htmlFor`.
 
 ```jsx
 export default Hola;
