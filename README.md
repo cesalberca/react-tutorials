@@ -32,7 +32,7 @@ Sus más notables propuestas son:
 
 Vamos a usar [Create React App](https://github.com/facebookincubator/create-react-app) para crear una aplicación web sin necesidad de configurar nada.
 
-Unicamente necesitaremos instalar en nuestra máquina [NodeJS](https://nodejs.org/en/) (Versión 7.7.4 o mayor).
+Unicamente necesitaremos instalar en nuestra máquina [NodeJS](https://nodejs.org/en/) (Versión 7.7.4 o mayor). Si estás en windows quizás sea necesario reiniciar.
 
 Una vez instalado NodeJS pasaremos a descargar la utilidad de `create-react-app`. Para ello abrimos terminal y seguimos estos comandos:
 
