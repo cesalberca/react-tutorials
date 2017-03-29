@@ -1,5 +1,3 @@
-# React tutorial - Autentia
-
 Antes de empezar este tutorial es recomendable tener conocimientos intermedios de [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) y de [ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla).
 
 ---
@@ -10,25 +8,11 @@ Antes de empezar este tutorial es recomendable tener conocimientos intermedios d
 
 Sus más notables propuestas son:
 
-* Propagación de datos unidireccional
-
-    Los datos son propagados de __componentes padres a componentes hijos__. La comunicación entre padres e hijos se hace mediante __[callbacks](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/)__ y los eventos son enviados de hijos a padres, siendo los componentes padre los que gestionan el estado y la lógica.
-
-* DOM Virtual
-
-    React genera una estructura en memoria semejante al DOM físico. Cuando detecta algún cambio compara entre el DOM virtual y el DOM físico y sólamente recarga aquello que haya cambiado. Ésta innovación hace obsoleto el tener que recargar la página entera cada vez que el estado es modificado.
-
-* JSX
-
-    JSX es una extensión de la sintaxis de Javascript comúnmente usada para codificar los componentes. Es semejante a html y se embebe en los ficheros `.js`, con lo que disponemos de todas las ventajas programáticas de Javascript.
-
-* Aplicaciones isomórficas
-
-    Esto quiere decir que las aplicaciones web se pueden renderizar tanto en el cliente como en el servidor. Si ésta se renderiza en el servidor se puede enviar al cliente desde el servidor html puro en aquellos casos que se pueda.
-
-* React Native
-
-    Facebook lanzó en 2015 [React Native](https://facebook.github.io/react-native/), el cual permite crear componentes usando herramientas de desarollo web y que genera aplicaciones __nativas__ tanto para _Android_ como para _IOS_.
+* Propagación de datos unidireccional: Los datos son propagados de __componentes padres a componentes hijos__. La comunicación entre padres e hijos se hace mediante __[callbacks](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/)__ y los eventos son enviados de hijos a padres, siendo los componentes padre los que gestionan el estado y la lógica.
+* DOM Virtual: React genera una estructura en memoria semejante al DOM físico. Cuando detecta algún cambio compara entre el DOM virtual y el DOM físico y sólamente recarga aquello que haya cambiado. Ésta innovación hace obsoleto el tener que recargar la página entera cada vez que el estado es modificado.
+* JSX: JSX es una extensión de la sintaxis de Javascript comúnmente usada para codificar los componentes. Es semejante a html y se embebe en los ficheros `.js`, con lo que disponemos de todas las ventajas programáticas de Javascript.
+* Aplicaciones isomórficas: Esto quiere decir que las aplicaciones web se pueden renderizar tanto en el cliente como en el servidor. Si ésta se renderiza en el servidor se puede enviar al cliente desde el servidor html puro en aquellos casos que se pueda.
+* React Native: Facebook lanzó en 2015 [React Native](https://facebook.github.io/react-native/), el cual permite crear componentes usando herramientas de desarollo web y que genera aplicaciones __nativas__ tanto para _Android_ como para _IOS_.
 
 # 2. Entorno
 
@@ -72,7 +56,7 @@ react-tutorial/
   public/
     favicon.ico
 index.html          // Página donde se inyectarán los componentes de React
-  src/              // Directorio de desarollo que es el que usaremos nosotros
+  src/              // Directorio de desarrollo que es el que usaremos nosotros
     App.css
     App.js
     App.test.js
@@ -267,6 +251,7 @@ class Contador extends Component {
     );
   }
 }
+
 export default Contador;
 ```
 
@@ -381,7 +366,7 @@ Si todo ha ido bien veremos lo siguiente:
 
 # 8. Conclusión
 
-React es una gran propuesta de Facebook para solventar el diseño de interfaces complejas. Además nos permite reutilizar componentes, abstrae la manipulación directa del DOM y permite separar modularmente los componentes.
+React es una gran propuesta de Facebook para solventar el diseño y la programación de interfaces complejas. Además nos permite reutilizar componentes, abstrae la manipulación directa del DOM y nos da la posibilidad de separar modularmente los componentes.
 
 # 9. Referencias
 
