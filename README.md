@@ -4,6 +4,8 @@ Antes de empezar este tutorial es recomendable tener conocimientos intermedios d
 
 ---
 
+# 1. Introducción
+
 [React](https://facebook.github.io/react/) es una librería para crear interfaces de usuarios. Fue creada por Facebook en 2011 y liberada como open source en 2013, cuenta con proyectos en producción por compañías como Netflix, Airbnb, Walmart, Facebook e Instagram.
 
 Sus más notables propuestas son:
@@ -28,11 +30,18 @@ Sus más notables propuestas son:
 
     Facebook lanzó en 2015 [React Native](https://facebook.github.io/react-native/), el cual permite crear componentes usando herramientas de desarollo web y que genera aplicaciones __nativas__ tanto para _Android_ como para _IOS_.
 
-## Instalación
+# 2. Entorno
+
+* Hardware: MacBook Pro 17' (2,66 GHz Intel Core i7, 8GB DDR3)
+* Sistema operativo: macOS Sierra 10.12.4
+* Entorno de desarrollo: VSCode
+* Nodejs 7.7.4
+
+# 3. Instalación
 
 Vamos a usar [Create React App](https://github.com/facebookincubator/create-react-app) para crear una aplicación web sin necesidad de configurar nada.
 
-Unicamente necesitaremos instalar en nuestra máquina [NodeJS](https://nodejs.org/en/) (Versión 7.7.4 o mayor). Si estás en windows quizás sea necesario reiniciar.
+Unicamente necesitaremos instalar en nuestra máquina [NodeJS](https://nodejs.org/en/) (Versión 7.7.4 o mayor). Si estás en windows es necesario reiniciar.
 
 Una vez instalado NodeJS pasaremos a descargar la utilidad de `create-react-app`. Para ello abrimos terminal y seguimos estos comandos:
 
@@ -50,7 +59,7 @@ Si todo ha ido bien veremos la siguiente pantalla:
 
 Además veríamos que se abre nuestro navegador con la aplicación ya corriendo.
 
-## ¿Qué es lo que ha hecho create-react-app?
+# 4. ¿Qué es lo que ha hecho create-react-app?
 
 Create React App ha generado y dispuesto una estructura de ficheros de la siguiente forma:
 
@@ -74,7 +83,7 @@ index.html          // Página donde se inyectarán los componentes de React
 
 Además nos ayuda a generar un servidor local de desarrollo que nos muestra errores nos ofrece linting en nuestro editor y recarga la página automáticamente cuando un cambio es detectado. 😎
 
-## Componentes
+## 5. Componentes
 
 Vamos a crear nuestro primer componente. Creamos un fichero nuevo llamado `Hola.js` en la carpeta `src`.
 
@@ -184,7 +193,7 @@ export default Hola;
 
 Esta línea quiere decir que vamos a exportar nuestro componente para que éste pueda ser usado a lo largo de nuestra aplicación.
 
-## Props
+# 6. Props
 
 Vamos a hacer que nuestro componente `Hola` sea dinámico.
 
@@ -234,7 +243,7 @@ O por ejemplo
 
 Que hace que si la propiedad que hemos pasado a nuestro componente es "César" nos saluda como es debido.
 
-## State
+# 7. State
 
 Vamos a ver una parte primordial de las aplicaciones hechas con React. El __estado__. Imaginemos que queremos hacer un contador que vaya contando de uno en uno.
 
@@ -334,7 +343,7 @@ class Contador extends Component {
 export default Contador;
 ```
 
-Y para usarlo vamos a `App.js` e importamos nuestro componente y lo incluimos como se muestra continuación.
+Y para usarlo vamos a `App.js` e importamos nuestro componente y lo incluimos como se muestra a continuación.
 
 ```jsx
 import React, { Component } from 'react';
@@ -369,3 +378,17 @@ Si todo ha ido bien veremos lo siguiente:
 ![Contador funcionando](./assets/contador.png)
 
  Y podrás comprobar que si pulsas sobre el botón el contador va aumentando. 👍
+
+# 8. Conclusión
+
+React es una gran propuesta de Facebook para solventar el diseño de interfaces complejas. Además nos permite reutilizar componentes, abstrae la manipulación directa del DOM y permite separar modularmente los componentes.
+
+# 9. Referencias
+
+* [React](https://facebook.github.io/react/)
+* [React Native](https://facebook.github.io/react-native/)
+* [Create React App](https://github.com/facebookincubator/create-react-app)
+* [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla)
+* [NodeJS](https://nodejs.org/en/)
+* [Javascript Callbacks](http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/)
