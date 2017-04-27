@@ -14,6 +14,8 @@ Sus más notables propuestas son:
 * Aplicaciones isomórficas: Esto quiere decir que las aplicaciones web se pueden renderizar tanto en el cliente como en el servidor. Si ésta se renderiza en el servidor se puede enviar al cliente desde el servidor html puro en aquellos casos que se pueda.
 * React Native: Facebook lanzó en 2015 [React Native](https://facebook.github.io/react-native/), el cual permite crear componentes usando herramientas de desarollo web y que genera aplicaciones __nativas__ tanto para _Android_ como para _IOS_.
 
+Todo el código podrá verse en Github en este [link](https://github.com/cesalberca/react-tutorial).
+
 # 2. Entorno
 
 * Hardware: MacBook Pro 17' (2,66 GHz Intel Core i7, 8GB DDR3)
