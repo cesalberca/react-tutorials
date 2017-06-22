@@ -299,8 +299,8 @@ Para ello vamos a crear un botón de aumente el contador y un método de aumenta
 import React, { Component } from 'react';
 
 class Contador extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       contador: 0
@@ -321,7 +321,7 @@ class Contador extends Component {
         <span>{this.state.contador}</span>
         {/* Al método onClick le asignamos un método.
         Importante poner la C de onClick en mayúsculas */}
-        <button onClick={this.aumentarContador()}>+</button>
+        <button onClick={this.aumentarContador}>+</button>
       </div>
     );
   }
