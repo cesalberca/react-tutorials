@@ -10,13 +10,15 @@ class Contador extends Component {
   }
 
   aumentarContador = () => {
-    this.setState({contador: this.state.contador + 1});
-  }
+    this.setState({ contador: this.state.contador + 1 });
+  };
 
   render() {
     return (
       <div>
-        <span>{this.state.contador}</span>
+        <span>
+          {this.state.contador}
+        </span>
         <button onClick={this.aumentarContador}>+</button>
       </div>
     );
